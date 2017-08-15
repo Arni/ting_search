@@ -73,7 +73,7 @@ function ting_search_search_result_content_type_render($subtype, $conf, $panel_a
       drupal_add_js(drupal_get_path('module', 'ting_search') . '/js/ting_pre_search.js');
       drupal_add_js(array('ting_search_keys' => $keys), 'setting');
       $block->content = $pre_results;
-      $block->content .= '<div id="ting-ajax-search"> </div>';
+      $block->content .= '<div id="ting-ajax-search" style="min-height:200px;"> </div>';
       $block->title = t('Search results');
 file_put_contents("/var/www/drupalvm/drupal/debug/search7.txt", print_r($block, TRUE), FILE_APPEND);
       return $block;
