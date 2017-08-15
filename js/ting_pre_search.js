@@ -8,6 +8,7 @@
 
   Drupal.behaviors.tingGetAjaxSearchResult = {		
     attach: function(context, settings) {
+      Drupal.TingSearchOverlay();
       $.ajax({
         type: "POST",
         url: Drupal.settings.basePath + "ting/search/ajax",
@@ -19,6 +20,7 @@
           if (data != null) {
             
             $("#ting-ajax-search").html(data);
+            
           }
         }
       });				

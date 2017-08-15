@@ -22,3 +22,7 @@
 .navigate select {
   float: left;
 }
+
+#ting-ajax-search .search-overlay--wrapper {
+  position: relative;
+}

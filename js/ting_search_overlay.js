@@ -28,8 +28,8 @@
       var overlay = $('.search-overlay--wrapper');
       if (!overlay.length) {
         // Overlay not found so create is and display.
-        overlay = $('<div class="search-overlay--wrapper"><div class="search-overlay--inner"><i class="icon-spinner icon-spin search-overlay--icon"></i><p class="search-overlay--text">' + Drupal.t('Searching please wait...') + '</p><p class="cancel"><a href="#">' + Drupal.t('Cancel') + '</a></p></div></div>');
-        $('body').prepend(overlay);
+        overlay = $('<div class="search-overlay--wrapper" style="position:relative;z-index:0;"><div class="search-overlay--inner"><i class="icon-spinner icon-spin search-overlay--icon"></i><p class="search-overlay--text">' + Drupal.t('Searching please wait...') + '</p><p class="cancel"><a href="#">' + Drupal.t('Cancel') + '</a></p></div></div>');
+        $('#ting-ajax-search').html(overlay);
       }
       else {
         // Overlay found.
