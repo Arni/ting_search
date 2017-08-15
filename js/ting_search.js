@@ -5,7 +5,7 @@
     // Add overlay with spinner to search input fields while searching.
     $('input[name="search_block_form"]').keydown(function(event) {
       // When enter is hit in the search form.
-      if (event.which == 13) {
+      if (event.which === 13) {
         Drupal.TingSearchOverlay();
       }
     });
@@ -19,7 +19,9 @@
 
     // Add search link to the different links on the search result page.
     $('.search-results a').live('click', function() {
-      Drupal.TingSearchOverlay();
+      if ($(this).not('[target="_blank"]').length) {
+        Drupal.TingSearchOverlay();
+      }
     });
   });
 

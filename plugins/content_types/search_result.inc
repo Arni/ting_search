@@ -63,6 +63,24 @@ function ting_search_search_result_content_type_render($subtype, $conf, $panel_a
   $block = new stdClass();
   $block->module = 'search';
   $block->delta = 'result';
+ file_put_contents("/var/www/drupalvm/drupal/debug/search4.txt", print_r($keys, TRUE), FILE_APPEND);
+ file_put_contents("/var/www/drupalvm/drupal/debug/search5.txt", print_r($conditions, TRUE), FILE_APPEND);
+ file_put_contents("/var/www/drupalvm/drupal/debug/search6.txt", print_r($info, TRUE), FILE_APPEND);
+ 
+ if (empty($conditions['facets'])) {
+    $pre_results = ting_search_check_pre_results($keys);
+    if (!empty($pre_results)) {
+      drupal_add_js(drupal_get_path('module', 'ting_search') . '/js/ting_pre_search.js');
+      drupal_add_js(array('ting_search_keys' => $keys), 'setting');
+      $block->content = $pre_results;
+      $block->content .= '<div id="ting-ajax-search"> </div>';
+      $block->title = t('Search results');
+file_put_contents("/var/www/drupalvm/drupal/debug/search7.txt", print_r($block, TRUE), FILE_APPEND);
+      return $block;
+    }
+  }
+
+
 
   $results = '';
   // Only search if there are keywords or non-empty conditions.
@@ -83,10 +101,24 @@ function ting_search_search_result_content_type_render($subtype, $conf, $panel_a
 
     // Set message.
     $message = '';
+
+    $frequency_rank = array(
+      'rank_main_title' => t('Title'),
+      'rank_title' => t('Title'),
+      'rank_creator' => t('Creator'),
+      'rank_subject' => t('Subject')
+    );
+
+    if (isset($search_result) && empty($conditions['sort']) && in_array($search_result->sortUsed, array_keys($frequency_rank))) {
+      $msg = t('Records are sorted by %sortUsed . Select another sort if it is not suited', array('%sortUsed' => $frequency_rank[$search_result->sortUsed]));
+      $message .= '<div class="messages status">' . $msg . '</div>';
+    }
+
+
     if (isset($search_result) && $limit < $search_result->numTotalObjects) {
-      $msg = variable_get('ting_search_result_message', 'Your search gave more than %s results. Try to search more specific or use the facets to filter the result.');
+      $msg = t('Your search gave more than %s results. Try to search more specific or use the facets to filter the result.');
       $msg = sprintf($msg, $limit);
-      $message = '<div class="messages search-field-in-content--message">' . $msg . '</div>';
+      $message .= '<div class="messages search-field-in-content--message">' . $msg . '</div>';
     }
 
     $block->title = t('Search results');

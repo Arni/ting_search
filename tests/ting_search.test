@@ -16,8 +16,6 @@ class TingSearchTestCase extends DrupalWebTestCase {
     parent::setUp('ting', 'ding_entity', 'search', 'ting_search', 'nanosoap');
     variable_set('ting_agency', '100200');
     variable_set('ting_search_url', 'http://opensearch.addi.dk/next_2.0/');
-    variable_set('ting_scan_url', 'http://openscan.addi.dk/1.5/');
-    variable_set('ting_spell_url', 'http://openspell.addi.dk/1.2/');
     variable_set('ting_recommendation_url', 'http://openadhl.addi.dk/1.1/');
     variable_set('search_active_modules', array('ting_search' => 'ting_search'));
     variable_set('ting_search_profile', 'opac');
@@ -174,6 +172,35 @@ class TingSearchParsingTestCase extends DrupalUnitTestCase {
           'dc.title' => 'flammernes pokal',
         ),
       ),
+      // Regression tests.
+      array(
+        'string' => 'banana and (dk=sk)',
+        'keys' => array('term.creator', 'term.title', 'term.subject'),
+        'expected' => array(
+          'q' => 'banana and (dk=sk)',
+        ),
+      ),
+      array(
+        'string' => 'banana AND (dk=sk)',
+        'keys' => array('term.creator', 'term.title', 'term.subject'),
+        'expected' => array(
+          'q' => 'banana and (dk=sk)',
+        ),
+      ),
+      array(
+        'string' => '(dk=sk)',
+        'keys' => array('term.creator', 'term.title', 'term.subject'),
+        'expected' => array(
+          'q' => '(dk=sk)',
+        ),
+      ),
+      array(
+        'string' => '(term.type="bog" OR term.type="ebog") AND (term.subject="fantasy" OR term.subject="krimi")',
+        'keys' => array('term.creator', 'term.title', 'term.subject'),
+        'expected' => array(
+          'q' => '(term.type="bog" OR term.type="ebog") and (term.subject="fantasy" OR term.subject="krimi")',
+        ),
+      ),
     );
     foreach ($testCases as $test) {
       drupal_static_reset('ting_search_extract_indexes');
@@ -187,45 +214,30 @@ class TingSearchParsingTestCase extends DrupalUnitTestCase {
 
   function testQuoting() {
     drupal_load('module', 'ting_search');
-    $testCases = array(
-      array(
-        'string' => 'anders and',
-        'expected' => 'anders "and"',
-      ),
-      array(
-        'string' => 'anders aNd',
-        'expected' => 'anders "aNd"',
-      ),
-      array(
-        // This might seem like a pretty simple case, but this is actually a
-        // regression test for an issue not caught by the more advanced tests.
-        'string' => 'anders AND',
-        'expected' => 'anders AND',
-      ),
-      array(
-        'string' => 'anders and AND (dc.title=historie)',
-        'expected' => 'anders "and" AND (dc.title=historie)',
-      ),
-      array(
-        'string' => 'anders AND (dc.title=historie)',
-        'expected' => 'anders AND (dc.title=historie)',
-      ),
-      array(
-        'string' => '"anders and" (dc.title=historie)',
-        'expected' => '"anders and" (dc.title=historie)',
-      ),
-      array(
-        'string' => '"anders \"and\"" (dc.title=historie)',
-        'expected' => '"anders \"and\"" (dc.title=historie)',
-      ),
+    require_once "strings_for_cql_test.php";
 
-    );
-    foreach ($testCases as $test) {
-      $res = _ting_search_quote($test['string']);
-      $this->assertEqual($res, $test['expected'], 'Properly quoted: ' . $test['string']);
-      if ($res != $test['expected']) {
+    $testCases = ting_search_test_valid_cql();
+
+    foreach ($testCases as $search => $expected) {
+      $res = _ting_search_quote($search);
+      $string = preg_replace( "/\r|\n/", "", $search );
+      $result = preg_replace( "/\r|\n/", "", $expected );
+      $this->assertEqual($string,$result , 'Properly quoted: ' . $search);
+      if ($string != $result) {
         debug($res);
       }
     }
+
+    $testCases = ting_search_test_invalid_cql();
+
+    foreach ($testCases as $search => $expected) {
+      $res = _ting_search_quote($search);
+      $this->assertEqual($res,$expected , 'Properly quoted: ' . $search);
+      if ($res != $expected) {
+        debug($res);
+        debug($search);
+      }
+    }
+
   }
 }
