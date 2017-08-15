@@ -290,7 +290,7 @@ function ting_search_form_search_block_form_alter(&$form, &$form_state, $form_id
   // This submits the form to a blank page and prevents the search to be
   // executed twice. See http://platform.dandigbib.org/issues/372 for more
   // information.
-  $form['#action'] = url('search-blank');
+  //$form['#action'] = url('search-blank');
 
   return $form;
 }
@@ -1058,11 +1058,7 @@ function ting_search_check_pre_results($keys) {
   </div>
 </div>  </div>
 </div>
-<div class="availability search-result--availability">
-          <p class="js-pending">Henter beholdningsoplysninger:
-  <a href="/ting/object/870970-basis%3A52559316" class="search-result--availability-link availability pending" id="availability-870970-basis52559316-bog">Bog</a></p>
-  </div>
-</div>
+
     </li>
 
 <li class="list-item search-result">
@@ -1093,10 +1089,6 @@ function ting_search_check_pre_results($keys) {
   </div>
 </div>  </div>
 </div>
-<div class="availability search-result--availability">
-          <p class="js-pending">Henter beholdningsoplysninger:
-  <a href="/ting/object/870970-basis%3A51268172" class="search-result--availability-link availability pending" id="availability-870970-basis51268172-bog">Bog</a></p>
-  </div>
 </div>
     </li>
 
@@ -1129,9 +1121,6 @@ function ting_search_check_pre_results($keys) {
 </div>  </div>
 </div>
 <div class="availability search-result--availability">
-          <p class="js-pending">Henter beholdningsoplysninger:
-  <a href="/ting/object/870970-basis%3A29705119" class="search-result--availability-link availability pending" id="availability-870970-basis29705119-bog">Bog</a></p>
-  </div>
 </div>
     </li>
 
