@@ -1028,103 +1028,71 @@ file_put_contents("/var/www/drupalvm/drupal/debug/search9.txt", print_r($results
 
 function ting_search_check_pre_results($keys) {
   $results = '<div class="search-results">
-   <ol class="search-results -results">
-   
-   <li class="list-item search-result">
-      <div class="ting-object view-mode-teaser clearfix">
-    
-  <div class="ting-object view-mode-search-result list-item-style clearfix">
-  <div class="inner">
-    <a href="/ting/collection/870970-basis%3A52559316">
-      <div class="field-group-format group_ting_left_col_search field-group-div group-ting-left-col-search ting-object-left speed-none effect-none">
-  <div class="ting-cover ting-cover-processed" data-ting-cover-object-id="870970-basis:52559316" data-ting-cover-style="ding_list_medium"><img src="http://127.0.0.1:4567/sites/default/files/styles/ding_list_medium/public/ting/covers/ODcwOTcwLWJhc2lzOjUyNTU5MzE2.jpg?itok=n2PXOJYD" alt="Jussi Adler-Olsen: Selfies : krimithriller" class="scale-width"></div></div>    </a>
-    <div class="field-group-format group_ting_right_col_search field-group-div group-ting-right-col-search ting-object-right speed-none effect-none">  <div class="field field-name-ting-title field-type-ting-title field-label-hidden"><span class="search-result--heading-type">Bog:</span><h2><a href="/ting/collection/870970-basis%3A52559316">Selfies : krimithriller</a></h2></div>
-  <div class="field field-name-ting-author field-type-ting-author field-label-hidden">Af <a href="/search/ting/phrase.creator%3D%22Jussi%20Adler-Olsen%22" class="author">Jussi Adler-Olsen</a> (2016)</div>
-<div class="field field-name-ting-abstract field-type-ting-abstract field-label-hidden">
-    <div class="field-items">
-          <div class="field-item even">Krimi. En kvinde findes myrdet i Kongens Have, og i Afdeling Q kobles sagen til et mord med næsten samme fremgangsmåd...</div>
-      </div>
-</div>
-<div class="field field-name-ting-series field-type-ting-series field-label-inline clearfix">
-      <div class="field-label">Serie</div>
-    <div class="field-items">
-          <div class="field-item even"><a href="/search/ting/phrase.titleSeries%3D%22afdeling%20q%20%22" class="series">Afdeling Q</a> :  7 ; </div>
-      </div>
-</div>
-<div class="availability search-result--availability">
-        <strong>Borrowing options</strong>
-          <p class="js-pending">Henter beholdningsoplysninger:
-  <a href="/ting/object/870970-basis%3A52559316" class="search-result--availability-link availability pending" id="availability-870970-basis52559316-bog--2">Bog</a></p>
-  </div>
-</div>  </div>
-</div>
-
-    </li>
-
+<ul class="list floated">
+      
 <li class="list-item search-result">
       <div class="ting-object view-mode-teaser clearfix">
     
-  <div class="ting-object view-mode-search-result list-item-style clearfix">
-  <div class="inner">
-    <a href="/ting/collection/870970-basis%3A51268172">
-      <div class="field-group-format group_ting_left_col_search field-group-div group-ting-left-col-search ting-object-left speed-none effect-none">
-  <div class="ting-cover ting-cover-processed" data-ting-cover-object-id="870970-basis:51268172" data-ting-cover-style="ding_list_medium"><img src="http://127.0.0.1:4567/sites/default/files/styles/ding_list_medium/public/ting/covers/ODcwOTcwLWJhc2lzOjUxMjY4MTcy.jpg?itok=3cEDux0X" alt="Jussi Adler-Olsen: Den grænseløse : krimithriller" class="scale-width"></div></div>    </a>
-    <div class="field-group-format group_ting_right_col_search field-group-div group-ting-right-col-search ting-object-right speed-none effect-none">  <div class="field field-name-ting-title field-type-ting-title field-label-hidden"><span class="search-result--heading-type">Bog:</span><h2><a href="/ting/collection/870970-basis%3A51268172">Den grænseløse : krimithriller</a></h2></div>
-  <div class="field field-name-ting-author field-type-ting-author field-label-hidden">Af <a href="/search/ting/phrase.creator%3D%22Jussi%20Adler-Olsen%22" class="author">Jussi Adler-Olsen</a> (2014)</div>
-<div class="field field-name-ting-abstract field-type-ting-abstract field-label-hidden">
-    <div class="field-items">
-          <div class="field-item even">Krimi. Trafikulykke eller mord? Carl Mørch og hans kolleger i Afdeling Q giver sig her i kast med at opklare omstændi...</div>
-      </div>
-</div>
+  <div class="ting-object view-mode-search-result clearfix">
+    <div class="field-group-format group_ting_left_col_search field-group-div group-ting-left-col-search ting-object-left speed-none effect-none">
+  <div class="ting-cover ting-cover-object-id-52559316 ting-cover-style-ding_list_medium ting-cover-owner-id-870970 ting-cover-processed"><img src="https://randersbib.dk/sites/default/files/styles/ding_list_medium/public/ting/covers/object/063b33d9265ca2ed920e293ebc1784a1.jpg?itok=FAaDnH5a" alt="Jussi Adler-Olsen: Selfies : krimithriller"></div></div><div class="field-group-format group_ting_right_col_search field-group-div group-ting-right-col-search ting-object-right speed-none effect-none">  <div class="heading"><h2><span class="search-result--heading-type">Bog:</span><a href="/ting/collection/870970-basis%3A52559316">Selfies : krimithriller</a></h2></div>
+  <div class="content">Af <a href="/search/ting/phrase.creator%3D%22Jussi%20Adler-Olsen%22" class="author">Jussi Adler-Olsen</a> (2016)</div>
+  <div class="content">Krimi. En kvinde findes myrdet i Kongens Have, og i Afdeling Q kobles sagen til et mord med næsten samme fremgangsmåde begået for 12 år siden. Sagen er dog ikke det eneste, der kæmpes med i afdelingen, da Rose pludselig forsvinder</div>
 <div class="field field-name-ting-series field-type-ting-series field-label-inline clearfix">
-      <div class="field-label">Serie</div>
+      <div class="field-label">Serie:&nbsp;</div>
     <div class="field-items">
-          <div class="field-item even"><a href="/search/ting/phrase.titleSeries%3D%22afdeling%20q%20%22" class="series">Afdeling Q</a> :  6 ; </div>
+          <div class="field-item even"><a href="/search/ting/phrase.titleSeries%3D%22afdeling%20q%22" class="series">Afdeling Q</a> :  7</div>
       </div>
 </div>
-<div class="availability search-result--availability">
-        <strong>Borrowing options</strong>
-          <p class="js-pending">Henter beholdningsoplysninger:
-  <a href="/ting/object/870970-basis%3A51268172" class="search-result--availability-link availability pending" id="availability-870970-basis51268172-bog--2">Bog</a></p>
+</div></div>
+<div class="availability search-result--availability"><p class="js-reservable">Udlånt: <a href="/ting/object/870970-basis%3A52559316" class="search-result--availability-link availability processed reservable" id="availability-870970-basis52559316-bog">Bog</a></p>
+          
   </div>
-</div>  </div>
-</div>
 </div>
     </li>
 
 <li class="list-item search-result">
       <div class="ting-object view-mode-teaser clearfix">
     
-  <div class="ting-object view-mode-search-result list-item-style clearfix">
-  <div class="inner">
-    <a href="/ting/collection/870970-basis%3A29705119">
-      <div class="field-group-format group_ting_left_col_search field-group-div group-ting-left-col-search ting-object-left speed-none effect-none">
-  <div class="ting-cover ting-cover-processed" data-ting-cover-object-id="870970-basis:29705119" data-ting-cover-style="ding_list_medium"><img src="http://127.0.0.1:4567/sites/default/files/styles/ding_list_medium/public/ting/covers/ODcwOTcwLWJhc2lzOjI5NzA1MTE5.jpg?itok=1Cpwb0aA" alt="Jussi Adler-Olsen: Marco effekten : krimithriller" class="scale-width"></div></div>    </a>
-    <div class="field-group-format group_ting_right_col_search field-group-div group-ting-right-col-search ting-object-right speed-none effect-none">  <div class="field field-name-ting-title field-type-ting-title field-label-hidden"><span class="search-result--heading-type">Bog:</span><h2><a href="/ting/collection/870970-basis%3A29705119">Marco effekten : krimithriller</a></h2></div>
-  <div class="field field-name-ting-author field-type-ting-author field-label-hidden">Af <a href="/search/ting/phrase.creator%3D%22Jussi%20Adler-Olsen%22" class="author">Jussi Adler-Olsen</a> (2012)</div>
-<div class="field field-name-ting-abstract field-type-ting-abstract field-label-hidden">
-    <div class="field-items">
-          <div class="field-item even">Krimi. Den 15-årige Marco flygter fra sin voldelige og kriminelle klan. Klanen vil gøre det af med ham, og det er der...</div>
-      </div>
-</div>
+  <div class="ting-object view-mode-search-result clearfix">
+    <div class="field-group-format group_ting_left_col_search field-group-div group-ting-left-col-search ting-object-left speed-none effect-none">
+  <div class="ting-cover ting-cover-object-id-51268172 ting-cover-style-ding_list_medium ting-cover-owner-id-870970 ting-cover-processed"><img src="https://randersbib.dk/sites/default/files/styles/ding_list_medium/public/ting/covers/object/c74d07ff238d08d3932f05a89a1796e1.jpg?itok=IInkaquM" alt="Jussi Adler-Olsen: Den grænseløse : krimithriller"></div></div><div class="field-group-format group_ting_right_col_search field-group-div group-ting-right-col-search ting-object-right speed-none effect-none">  <div class="heading"><h2><span class="search-result--heading-type">Bog:</span><a href="/ting/collection/870970-basis%3A51268172">Den grænseløse : krimithriller</a></h2></div>
+  <div class="content">Af <a href="/search/ting/phrase.creator%3D%22Jussi%20Adler-Olsen%22" class="author">Jussi Adler-Olsen</a> (2014)</div>
+  <div class="content">Krimi. Trafikulykke eller mord? Carl Mørch og hans kolleger i Afdeling Q giver sig her i kast med at opklare omstændighederne ved en ung kvindes død på Bornholm i 1997</div>
 <div class="field field-name-ting-series field-type-ting-series field-label-inline clearfix">
-      <div class="field-label">Serie</div>
+      <div class="field-label">Serie:&nbsp;</div>
     <div class="field-items">
-          <div class="field-item even"><a href="/search/ting/phrase.titleSeries%3D%22afdeling%20q%20%22" class="series">Afdeling Q</a> :  5 ; </div>
+          <div class="field-item even"><a href="/search/ting/phrase.titleSeries%3D%22afdeling%20q%22" class="series">Afdeling Q</a> :  6</div>
       </div>
 </div>
-<div class="availability search-result--availability">
-        <strong>Borrowing options</strong>
-          <p class="js-pending">Henter beholdningsoplysninger:
-  <a href="/ting/object/870970-basis%3A29705119" class="search-result--availability-link availability pending" id="availability-870970-basis29705119-bog--2">Bog</a></p>
+</div></div>
+<div class="availability search-result--availability"><p class="js-available">Tilgængelig: <a href="/ting/object/870970-basis%3A51268172" class="search-result--availability-link availability processed available" id="availability-870970-basis51268172-bog">Bog</a></p>
+          
   </div>
-</div>  </div>
-</div>
-<div class="availability search-result--availability">
 </div>
     </li>
 
-   </ol>
+<li class="list-item search-result">
+      <div class="ting-object view-mode-teaser clearfix">
+    
+  <div class="ting-object view-mode-search-result clearfix">
+    <div class="field-group-format group_ting_left_col_search field-group-div group-ting-left-col-search ting-object-left speed-none effect-none">
+  <div class="ting-cover ting-cover-object-id-29705119 ting-cover-style-ding_list_medium ting-cover-owner-id-870970 ting-cover-processed"><img src="https://randersbib.dk/sites/default/files/styles/ding_list_medium/public/ting/covers/object/9bd8d72945a4781944d11be098525c96.jpg?itok=Hcl7Snn1" alt="Jussi Adler-Olsen: Marco effekten : krimithriller"></div></div><div class="field-group-format group_ting_right_col_search field-group-div group-ting-right-col-search ting-object-right speed-none effect-none">  <div class="heading"><h2><span class="search-result--heading-type">Bog:</span><a href="/ting/collection/870970-basis%3A29705119">Marco effekten : krimithriller</a></h2></div>
+  <div class="content">Af <a href="/search/ting/phrase.creator%3D%22Jussi%20Adler-Olsen%22" class="author">Jussi Adler-Olsen</a> (2012)</div>
+  <div class="content">Krimi. Den 15-årige Marco flygter fra sin voldelige og kriminelle klan. Klanen vil gøre det af med ham, og det er der også andre, der vil, for Marco er faldet over en hemmelighed, der har med korruption at gøre. Vicekriminalkommissær Carl Mørck og co. er i gang med korruptionssagen og krydser Marcos veje</div>
+<div class="field field-name-ting-series field-type-ting-series field-label-inline clearfix">
+      <div class="field-label">Serie:&nbsp;</div>
+    <div class="field-items">
+          <div class="field-item even"><a href="/search/ting/phrase.titleSeries%3D%22afdeling%20q%22" class="series">Afdeling Q</a> :  5</div>
+      </div>
+</div>
+</div></div>
+<div class="availability search-result--availability"><p class="js-available">Tilgængelig: <a href="/ting/object/870970-basis%3A29705119" class="search-result--availability-link availability processed available" id="availability-870970-basis29705119-bog">Bog</a></p>
+          
+  </div>
+</div>
+    </li>
+    </ul>
 
 </div>';
   return $results;
