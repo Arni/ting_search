@@ -438,17 +438,29 @@ function ting_search_search_execute($keys = NULL, $conditions = NULL) {
         $total_results = ($page + 1) * $results_per_page + ($search_result->more ? 1 : 0);
 
         pager_default_initialize($total_results, $results_per_page);
-
+        $i = 1;
         foreach ($search_result->collections as &$collection) {
           $build = ting_collection_view($collection, 'teaser');
           $uri = entity_uri('ting_collection', $collection);
+          
+          $snippet = drupal_render($build);
+          $number_in_search = ($page * $results_per_page) + $i;
+          $parameters = '?searchstring=' . rawurlencode($query) . '&number=' . $number_in_search;
+          $url = url($uri['path']);
+          $new_url = $url . $parameters;          
+          $snippet = str_replace($url, $new_url, $snippet);
+          
+          $object_url = str_replace('collection', 'object', $url);
+          $new_object_url = $object_url . $parameters;   
+          $snippet = str_replace($object_url, $new_object_url, $snippet);
+          
           $results[] = array(
             'link' => url($uri['path'], $uri['options']),
             'type' => '',
             'title' => $collection->title,
             'user' => '',
             'date' => '',
-            'snippet' => drupal_render($build),
+            'snippet' => $snippet,
           );
         }
       }
