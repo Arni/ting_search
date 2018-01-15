@@ -462,6 +462,7 @@ function ting_search_search_execute($keys = NULL, $conditions = NULL) {
             'date' => '',
             'snippet' => $snippet,
           );
+          $i++;
         }
       }
     }
