@@ -464,6 +464,8 @@ function ting_search_search_execute($keys = NULL, $conditions = NULL) {
           );
           $i++;
         }
+        $log_entry = 'search,' . $query . ',' . $page . ','. date("d-m-Y") . "\r\n";
+        file_put_contents('/var/www/drupalvm/drupal/debug/searchlog', $log_entry, FILE_APPEND);
       }
     }
     catch (TingClientException $e) {
