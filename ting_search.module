@@ -69,7 +69,11 @@ function ting_search_menu() {
  * @see http://platform.dandigbib.org/issues/372
  */
 function _blank_page() {
-  return '';
+  // This will call the submit handlers if a valid form build id was posted.
+  drupal_get_form('search_block_form');
+
+  // If no form; redirect to front to ensure no blank pages.
+  drupal_goto();
 }
 
 /**
