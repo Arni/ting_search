@@ -450,13 +450,19 @@ function ting_search_search_execute($keys = NULL, $conditions = NULL) {
           $snippet = drupal_render($build);
           $number_in_search = ($page * $results_per_page) + $i;
           $parameters = '?searchstring=' . rawurlencode($query) . '&number=' . $number_in_search;
-          $url = url($uri['path']);
-          $new_url = $url . $parameters;          
-          $snippet = str_replace($url, $new_url, $snippet);
           
-          $object_url = str_replace('collection', 'object', $url);
-          $new_object_url = $object_url . $parameters;   
-          $snippet = str_replace($object_url, $new_object_url, $snippet);
+          foreach ($collection->entities as $object) {
+            $id = str_replace(':', '%3A', $object->ding_entity_id);
+            $url = 'ting/object/' . $id;
+            $new_url = $url . $parameters;
+            $snippet = str_replace($url, $new_url, $snippet);
+            $url = 'ting/object/' . $object->ding_entity_id; //Some url aren't encoded
+            $new_url = $url . $parameters;
+            $snippet = str_replace($url, $new_url, $snippet);
+            $collection_url = 'ting/collection/' . $id;
+            $new_collection_url = $collection_url . $parameters;
+            $snippet = str_replace($collection_url, $new_collection_url, $snippet);
+          }
           
           $results[] = array(
             'link' => url($uri['path'], $uri['options']),
