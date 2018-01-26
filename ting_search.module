@@ -429,6 +429,11 @@ function ting_search_search_execute($keys = NULL, $conditions = NULL) {
       if (!empty($conditions['sort'])) {
         $options['sort'] = $conditions['sort'];
       }
+      
+      $query_specific_boost = ting_search_get_query_boost($query);
+      if (!empty ($query_specific_boost)) {
+         $options['querySpecificBoost'] = $query_specific_boost;
+      }
 
       module_load_include('client.inc', 'ting');
       $search_result = ting_do_search($query, $page + 1, $results_per_page, $options);
@@ -1049,3 +1054,25 @@ function _ting_search_string_is_cql($string) {
   return preg_match('@"|\(|\)|=@', $string);
 }
 
+function ting_search_get_query_boost($query) {
+  $boosts = array();
+
+  $boost_definitions = ting_search_get_query_boost_definition();
+  if (array_key_exists($query, $boost_definitions)) {   
+    foreach ($boost_definitions[$query] as $boost_definition) {
+      $boosts[] = array(
+        'fieldName' => $boost_definition[0],
+        'fieldValue' => $boost_definition[1],
+        'weight' => $boost_definition[2],
+      );
+    }
+  }
+  return $boosts;
+}
+
+function ting_search_get_query_boost_definition() {
+  $boost_definitions = array(
+      '(film)' => array(array('term.type', 'dvd', 100)),
+  );
+  return $boost_definitions;
+}
