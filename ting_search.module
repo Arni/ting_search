@@ -1072,7 +1072,7 @@ function ting_search_get_query_boost($query) {
 
 function ting_search_get_query_boost_definition() {
   $boost_definitions = array(
-      '(film)' => array(array('term.type', 'dvd', 100)),
+      '(film)' => array(array('term.type', 'dvd', 100),array('term.type', 'blue-ray', 100),array('term.type', 'film(net)', 90)),
   );
   return $boost_definitions;
 }
