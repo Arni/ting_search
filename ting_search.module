@@ -393,7 +393,7 @@ function ting_search_conditions_callback($keys) {
  */
 function ting_search_search_execute($keys = NULL, $conditions = NULL) {
   if ($keys == 'lydbøger') {
-    drupal_goto ('search/ting/facet.type%3D"lydbog%2A"');
+    drupal_goto ('search/ting/facet.type="lydbog*"');
   }
   // Use static variable to ensure that this is only executed once.
   $results = &drupal_static(__FUNCTION__);
