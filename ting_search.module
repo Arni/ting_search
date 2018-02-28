@@ -392,6 +392,9 @@ function ting_search_conditions_callback($keys) {
  * Implements hook_search_execute().
  */
 function ting_search_search_execute($keys = NULL, $conditions = NULL) {
+  if ($keys == 'lydbøger') {
+    drupal_goto ('search/ting/facet.type%3D"lydbog%2A"');
+  }
   // Use static variable to ensure that this is only executed once.
   $results = &drupal_static(__FUNCTION__);
   if (!isset($results)) {
@@ -438,6 +441,10 @@ function ting_search_search_execute($keys = NULL, $conditions = NULL) {
       module_load_include('client.inc', 'ting');
       $search_result = ting_do_search($query, $page + 1, $results_per_page, $options);
       if (isset($search_result->collections)) {
+        //Test off adding edited content
+        if ($keys == 'krimi') {
+          $results[] = ting_search_get_edit_content ();
+        }
         $search_result->search_key = $keys;
 
         // So we got the total amount of results, but the joker here is that
@@ -1073,6 +1080,29 @@ function ting_search_get_query_boost($query) {
 function ting_search_get_query_boost_definition() {
   $boost_definitions = array(
       '(film)' => array(array('term.type', 'dvd', 100),array('term.type', 'blue-ray', 100),array('term.type', 'film(net)', 90)),
+      '(harry and potter)' => array(array('term.default', '870970-basis:51980247',10000)),
   );
   return $boost_definitions;
 }
+
+function ting_search_get_edit_content() {
+  $results = array(
+      'link' => 'search/ting/krimi',
+      'type' => '',
+      'title' => 'krimi',
+      'user' => '',
+      'date' => '',
+      'snippet' => '<div class="ting-object view-mode-teaser clearfix">
+    <div class="ting-object view-mode-search-result imagestyle-ding-list-medium clearfix">
+      <div id="ting-object-ting-object-search-result-group-ting-left-col-search" class="ting-object-left group-ting-left-col-search field-group-div">
+        <p><a href="/content/anbefalinger/krimi"><img alt="" class="adaptive-image" breakpoint="max" height="370" src="https://randersbib.dk/sites/default/files/images/anbefalinger/krimier.png" width="540"></a></p>
+      </div>
+      <div id="ting-object-ting-object-search-result-group-ting-right-col-search" class="ting-object-right group-ting-right-col-search field-group-div">
+        <div class="heading">
+          <h2><a href="/ting/collection/870970-basis%3A29988137?searchstring=%28film%29&amp;number=1">Krimi</a></h2>
+        </div>
+      </div>
+    </div>
+  </div>',
+  );
+  return $results;
