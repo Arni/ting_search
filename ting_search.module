@@ -1106,3 +1106,4 @@ function ting_search_get_edit_content() {
   </div>',
   );
   return $results;
+}
